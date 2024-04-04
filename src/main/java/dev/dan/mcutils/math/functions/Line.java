@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Line extends MathObject {
+public class Line implements MathObject {
     private Vector p1;
     private Vector p2;
 

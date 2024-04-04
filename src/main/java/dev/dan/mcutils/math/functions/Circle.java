@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Circle extends MathObject {
+public class Circle implements MathObject {
 
     private final Vector center;
     private final double radius;

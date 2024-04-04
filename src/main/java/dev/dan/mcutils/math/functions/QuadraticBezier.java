@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuadraticBezier extends MathObject {
+public class QuadraticBezier implements MathObject {
 
     private Vector one;
     private Vector two;

@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CubicBezier extends MathObject {
+public class CubicBezier implements MathObject {
 
     private Vector one;
     private Vector two;

@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Square extends MathObject {
+public class Square implements MathObject {
     private Vector[] points;
 
     public Square(Vector point1, Vector point2, Vector point3, Vector point4){
