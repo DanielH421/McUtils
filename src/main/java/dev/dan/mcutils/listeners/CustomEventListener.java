@@ -20,11 +20,4 @@ public class CustomEventListener implements Listener {
         Bukkit.getPluginManager().callEvent(brushEvent);
     }
 
-
-    @EventHandler
-    public void onBrush(PlayerUseBrushEvent e){
-        System.out.println(e.getBrushedBlock().getType());
-    }
-
-
 }
