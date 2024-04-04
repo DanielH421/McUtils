@@ -4,7 +4,6 @@ import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import dev.dan.mcutils.pluginmanager.PluginManager;
 import dev.dan.mcutils.protocol.ProtocolListener;
 import lombok.Getter;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public final class McUtils extends ManagedPlugin {
 
