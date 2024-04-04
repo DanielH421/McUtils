@@ -1,0 +1,2 @@
+Everything in the loot package is very hard coded.
+It is extremely easy to shoot yourself in the foot if you use it.
