@@ -1,5 +1,7 @@
 package dev.dan.mcutils;
 
+import dev.dan.mcutils.listeners.ChecksListener;
+import dev.dan.mcutils.listeners.CustomEventListener;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import dev.dan.mcutils.pluginmanager.PluginManager;
 import dev.dan.mcutils.protocol.ProtocolListener;
@@ -16,6 +18,8 @@ public final class McUtils extends ManagedPlugin {
     public void enable() {
         instance = this;
         ProtocolListener.registerProtocolListeners();
+        registerListener(new CustomEventListener());
+        registerListener(new ChecksListener());
     }
 
     @Override

@@ -37,7 +37,7 @@ public class WorldUtils {
         }
         long end = System.currentTimeMillis();
         long time = (end-start);
-        McUtils.getInstance().logger.log("World "+w.getName()+" loaded in: "+time+"ms", true);
+        McUtils.getInstance().getCustomLogger().log("World "+w.getName()+" loaded in: "+time+"ms", true);
     }
     public static World loadCompressedWorld(String world){
         long start = System.currentTimeMillis();
@@ -48,7 +48,7 @@ public class WorldUtils {
         World ah = Bukkit.getWorld(world);
         long end = System.currentTimeMillis();
         long time = (end-start);
-        McUtils.getInstance().logger.log("World "+w.getName()+" loaded in: "+time+"ms", true);
+        McUtils.getInstance().getCustomLogger().log("World "+w.getName()+" loaded in: "+time+"ms", true);
         return ah;
     }
     public static World generateBlankWorld(String name){

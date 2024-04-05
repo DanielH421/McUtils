@@ -1,8 +1,11 @@
 package dev.dan.mcutils.pluginmanager;
 
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.BukkitCommandManager;
 import dev.dan.mcutils.McUtils;
 import dev.dan.mcutils.logger.Logger;
 import dev.dan.mcutils.utils.ListenerUtils;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
@@ -13,7 +16,11 @@ public abstract class ManagedPlugin extends JavaPlugin {
 
     public McUtils mcutils = null;
 
-    public Logger logger = new Logger(getPrefix());
+    @Getter
+    private Logger customLogger = new Logger(getPrefix());
+
+    @Getter
+    private BukkitCommandManager commandManager = null;
 
 
 
@@ -21,7 +28,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
     @Override
     public void onEnable(){
         String topBar = "&"+getSecondaryColor()+"&m                     &r&"+getPrimaryColor()+" "+getName()+" &"+getSecondaryColor()+"&m                     ";
-        logger.log(topBar);
+        customLogger.log(topBar);
         long startTime = System.nanoTime();
         if(this.getName().equals(McUtils.class.getName())){
             this.mcutils = (McUtils) this;
@@ -29,6 +36,8 @@ public abstract class ManagedPlugin extends JavaPlugin {
             this.mcutils = (McUtils) Bukkit.getPluginManager().getPlugin("McUtils");
             mcutils.registerPlugin(this);
         }
+
+        commandManager = new BukkitCommandManager(this);
 
         enable();
 
@@ -41,7 +50,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
             secondBar.insert(4, " ");
             secondBar.append(" ");
         }
-        logger.log(secondBar.toString());
+        customLogger.log(secondBar.toString());
     }
 
     public abstract void enable();
@@ -61,6 +70,10 @@ public abstract class ManagedPlugin extends JavaPlugin {
         ListenerUtils.registerListener(this, l);
     }
 
+    public void registerCommand(BaseCommand cmd){
+        commandManager.registerCommand(cmd);
+        customLogger.log("&"+ getSecondaryColor() +"Command: &8" + this.getName() + " &"+ getSecondaryColor()+"has been registered!", true);
+    }
 
     public void callSyncEvent(Event e){
         new BukkitRunnable(){

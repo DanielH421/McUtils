@@ -6,10 +6,16 @@ import org.rauschig.jarchivelib.Archiver;
 import org.rauschig.jarchivelib.ArchiverFactory;
 import org.rauschig.jarchivelib.CompressionType;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Objects;
 
 public class FileUtils {
+
+
+
 
 
     /*
@@ -25,7 +31,7 @@ public class FileUtils {
         try {
             org.apache.commons.io.FileUtils.forceDelete(file);
         } catch (IOException e) {
-            McUtils.getInstance().logger.printStackTrace(e);
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
@@ -36,7 +42,7 @@ public class FileUtils {
         try {
             File archive = archiver.create(archivename, source.getParentFile(), source);
         } catch (IOException e) {
-            McUtils.getInstance().logger.printStackTrace(e);
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
@@ -45,7 +51,7 @@ public class FileUtils {
         try {
             archiver.extract(source, source.getParentFile());
         } catch (IOException e) {
-            McUtils.getInstance().logger.printStackTrace(e);
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
     public static void uncompressFolder(File source){
@@ -53,7 +59,7 @@ public class FileUtils {
         try {
             archiver.extract(source, new File(source.getParentFile(), source.getName().replace(".tar.gz", "")));
         } catch (IOException e) {
-            McUtils.getInstance().logger.printStackTrace(e);
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
@@ -70,12 +76,16 @@ public class FileUtils {
                     try {
                         org.apache.commons.io.FileUtils.moveFileToDirectory(regionFile, world, false);
                     } catch (IOException e) {
-                        McUtils.getInstance().logger.printStackTrace(e);
+                        McUtils.getInstance().getCustomLogger().printStackTrace(e);
                     }
                 }
             }
         }
     }
+
+
+
+
     public static void moveRegionOnUnpack(File f){
         File world = new File(f.getParentFile(), f.getName().replace(".tar.gz", ""));
         for(String file : world.list()){
@@ -85,7 +95,7 @@ public class FileUtils {
                 try {
                     org.apache.commons.io.FileUtils.moveFileToDirectory(region, regions, false);
                 } catch (IOException e) {
-                    McUtils.getInstance().logger.printStackTrace(e);
+                    McUtils.getInstance().getCustomLogger().printStackTrace(e);
                 }
 
             }

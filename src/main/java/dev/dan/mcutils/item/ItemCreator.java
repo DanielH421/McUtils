@@ -74,6 +74,23 @@ public class ItemCreator {
         return this;
     }
 
+    public ItemCreator setClickable(boolean clickable) {
+        ItemMeta meta = stack.getItemMeta();
+        if(clickable){
+            meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER, 0);
+        } else {
+            meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER, 1);
+        }
+
+        return this;
+    }
+
+    public boolean isClickable() {
+        if(stack.getItemMeta() == null)
+            return true;
+        return stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER).equals(0);
+    }
+
     public boolean canMobPickup() {
         if (stack.getItemMeta() == null)
             return true;
