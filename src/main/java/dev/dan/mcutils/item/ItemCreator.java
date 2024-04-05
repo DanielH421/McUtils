@@ -56,73 +56,61 @@ public class ItemCreator {
     public boolean isPlaceable() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.NOT_PLACEABLE.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.INTEGER).equals(0);
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.NOT_PLACEABLE.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN);
     }
 
     public ItemCreator setPlaceable(boolean placeable) {
         ItemMeta meta = stack.getItemMeta();
-        meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.INTEGER, 1);
+        meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN, true);
         stack.setItemMeta(meta);
         return this;
     }
 
     public ItemCreator setMobPickup(boolean pickup) {
         ItemMeta meta = stack.getItemMeta();
-        int num = pickup ? 1 : 0;
-        meta.getPersistentDataContainer().set(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.INTEGER, num);
+        meta.getPersistentDataContainer().set(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.BOOLEAN, pickup);
         stack.setItemMeta(meta);
         return this;
     }
 
     public ItemCreator setClickable(boolean clickable) {
         ItemMeta meta = stack.getItemMeta();
-        if(clickable){
-            meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER, 0);
-        } else {
-            meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER, 1);
-        }
-
+        meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.BOOLEAN, !clickable);
         return this;
     }
 
     public boolean isClickable() {
         if(stack.getItemMeta() == null)
             return true;
-        return stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.INTEGER).equals(0);
+        return !stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.BOOLEAN);
     }
 
     public boolean canMobPickup() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.MOB_PICKUP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.INTEGER) == 1;
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.MOB_PICKUP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.BOOLEAN);
     }
 
     public boolean isGlowing() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.GLOW_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.INTEGER) == 1;
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.GLOW_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.BOOLEAN);
     }
 
     public ItemCreator setGlowing(boolean glowing) {
-        ItemMeta meta = stack.getItemMeta();
-        int num = glowing ? 1 : 0;
-        meta.getPersistentDataContainer().set(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.INTEGER, num);
-        stack.setItemMeta(meta);
+        stack.getItemMeta().getPersistentDataContainer().set(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.BOOLEAN, glowing);
         return this;
     }
 
     public ItemCreator setNameOnDrop(boolean named) {
-        ItemMeta meta = stack.getItemMeta();
-        int num = named ? 1 : 0;
-        meta.getPersistentDataContainer().set(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.INTEGER, num);
-        stack.setItemMeta(meta);
+        stack.getItemMeta().getPersistentDataContainer().set(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.BOOLEAN, named);
         return this;
     }
 
     public boolean isNamedOnDrop() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.INTEGER) == 1;
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.BOOLEAN);
     }
 
     public ItemCreator addStringContainer(NamespacedKey key, String string) {
