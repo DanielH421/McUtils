@@ -34,7 +34,6 @@ public class ParticleExecutor {
             hash = sectionLocations(locs, duration);
         } else if(totalTicks < 20){
             tickSpeed = Math.round((duration * 20) / 20);
-            System.out.println("AHH: "+(duration * 20) / 20);
         }
         boolean finalSectioned = sectioned;
         HashMap<Integer, ArrayList<Location>> finalHash = hash;
@@ -87,7 +86,6 @@ public class ParticleExecutor {
                 count++;
             }
         }.runTaskTimer(McUtils.getInstance(), 0 ,tickSpeed);
-        System.out.println("TICKSPEED: " + tickSpeed);
     }
 
 
