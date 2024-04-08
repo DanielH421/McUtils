@@ -1,6 +1,7 @@
 package dev.dan.mcutils.math.functions;
 
 import dev.dan.mcutils.math.MathObject;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
@@ -21,8 +22,17 @@ public class Circle implements MathObject {
     }
 
     @Override
-    public List<Location> getLocationList(World w, double precision) {
+    public List<Location> getLocations(World world, double precision) {
         List<Location> locs = new ArrayList<>();
+        getVectors(precision).forEach(vector -> locs.add(vector.toLocation(world)));
+        return locs;
+    }
+
+
+    @Override
+    public List<Vector> getVectors(double precision) {
+        List<Vector> vectors = new ArrayList<>();
+
         double circumference = 2.0 * Math.PI * radius;
         double steps = circumference / precision;
 
@@ -36,9 +46,10 @@ public class Circle implements MathObject {
                 y += tilt * Math.sin(angle);
             }
 
-            locs.add(new Location(w, x, y, z));
+            vectors.add(new Vector(x, y, z));
         }
 
-        return locs;
+
+        return vectors;
     }
 }

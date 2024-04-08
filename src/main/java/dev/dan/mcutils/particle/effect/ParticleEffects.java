@@ -36,12 +36,12 @@ public class ParticleEffects {
         corner2 = center.clone().add(height/2, -height/2, height/2).toVector();
         Square side4 = new Square(corner1, corner2);
         
-        effect.addEffect("top", top.getLocationList(center.getWorld(), precision));
-        effect.addEffect("bottom", bottom.getLocationList(center.getWorld(), precision));
-        effect.addEffect("side1", side1.getLocationList(center.getWorld(), precision));
-        effect.addEffect("side2", side2.getLocationList(center.getWorld(), precision));
-        effect.addEffect("side3", side3.getLocationList(center.getWorld(), precision));
-        effect.addEffect("side4", side4.getLocationList(center.getWorld(), precision));
+        effect.addEffect("top", top.getLocations(center.getWorld(), precision));
+        effect.addEffect("bottom", bottom.getLocations(center.getWorld(), precision));
+        effect.addEffect("side1", side1.getLocations(center.getWorld(), precision));
+        effect.addEffect("side2", side2.getLocations(center.getWorld(), precision));
+        effect.addEffect("side3", side3.getLocations(center.getWorld(), precision));
+        effect.addEffect("side4", side4.getLocations(center.getWorld(), precision));
         
         return effect;
     }

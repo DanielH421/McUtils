@@ -1,6 +1,7 @@
 package dev.dan.mcutils.math.functions;
 
 import dev.dan.mcutils.math.MathObject;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
@@ -25,21 +26,30 @@ public class Square implements MathObject {
 
 
     @Override
-    public List<Location> getLocationList(World world, double precision){
+    public List<Location> getLocations(World world, double precision){
         List<Location> locations = new ArrayList<>();
-
-        for(Location loc : new Line(points[0], points[1]).getLocationList(world, precision)){
-            locations.add(loc);
-        }
-        for(Location loc : new Line(points[1], points[2]).getLocationList(world, precision)){
-            locations.add(loc);
-        }
-        for(Location loc : new Line(points[2], points[3]).getLocationList(world, precision)){
-            locations.add(loc);
-        }
-        for(Location loc : new Line(points[3], points[0]).getLocationList(world, precision)){
-            locations.add(loc);
-        }
+        getVectors(precision).forEach(vector -> locations.add(vector.toLocation(world)));
         return locations;
+    }
+
+
+    @Override
+    public List<Vector> getVectors(double precision) {
+        List<Vector> vectors = new ArrayList<>();
+
+        for(Vector vec : new Line(points[1], points[2]).getVectors(precision)){
+            vectors.add(vec);
+        }
+        for(Vector vec : new Line(points[1], points[2]).getVectors(precision)){
+            vectors.add(vec);
+        }
+        for(Vector vec : new Line(points[1], points[2]).getVectors(precision)){
+            vectors.add(vec);
+        }
+        for(Vector vec : new Line(points[1], points[2]).getVectors(precision)){
+            vectors.add(vec);
+        }
+
+        return vectors;
     }
 }

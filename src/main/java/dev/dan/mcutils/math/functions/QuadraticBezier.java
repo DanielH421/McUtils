@@ -27,16 +27,24 @@ public class QuadraticBezier implements MathObject {
     }
 
     @Override
-    public List<Location> getLocationList(World w, double precision) {
+    public List<Location> getLocations(World world, double precision) {
         List<Location> locs = new ArrayList<>();
+        getVectors(precision).forEach(vector -> locs.add(vector.toLocation(world)));
+        return locs;
+    }
+
+
+    @Override
+    public List<Vector> getVectors(double precision) {
+        List<Vector> vectors = new ArrayList<>();
 
         for (double t = 0; t <= 1; t += precision) {
             double x = matrix[0][0] * Math.pow(1-t, 2) * one.getX() + matrix[0][1] * 2 * (1-t) * t * two.getX() + matrix[0][2] * Math.pow(t, 2) * three.getX();
             double y = matrix[1][0] * Math.pow(1-t, 2) * one.getY() + matrix[1][1] * 2 * (1-t) * t * two.getY() + matrix[1][2] * Math.pow(t, 2) * three.getY();
             double z = matrix[2][0] * Math.pow(1-t, 2) * one.getZ() + matrix[2][1] * 2 * (1-t) * t * two.getZ() + matrix[2][2] * Math.pow(t, 2) * three.getZ();
-            locs.add(new Location(w, x, y, z));
+            vectors.add(new Vector(x, y, z));
         }
 
-        return locs;
+        return vectors;
     }
 }
