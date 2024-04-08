@@ -11,12 +11,15 @@ import java.util.List;
 public class Square implements MathObject {
     private Vector[] points;
 
-    public Square(Vector point1, Vector point2, Vector point3, Vector point4){
+    public Square(Vector corner1, Vector corner2) {
         this.points = new Vector[4];
-        this.points[0] = point1;
-        this.points[1] = point2;
-        this.points[2] = point3;
-        this.points[3] = point4;
+
+        double dist = corner1.distance(corner2) / Math.sqrt(2);
+
+        this.points[0] = corner1;
+        this.points[1] = corner1.add(new Vector(dist, 0, dist));
+        this.points[2] = corner2;
+        this.points[3] = corner1.add(new Vector(-dist, 0, -dist));
     }
 
 

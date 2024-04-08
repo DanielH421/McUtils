@@ -24,7 +24,6 @@ public abstract class ManagedPlugin extends JavaPlugin {
 
 
 
-
     @Override
     public void onEnable(){
         String topBar = "&"+getSecondaryColor()+"&m                     &r&"+getPrimaryColor()+" "+getName()+" &"+getSecondaryColor()+"&m                     ";

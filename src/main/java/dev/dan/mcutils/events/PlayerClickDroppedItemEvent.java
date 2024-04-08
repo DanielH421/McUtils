@@ -1,7 +1,6 @@
 package dev.dan.mcutils.events;
 
 import dev.dan.mcutils.enums.PlayerAction;
-
 import lombok.Getter;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
