@@ -98,8 +98,8 @@ public class MultiPagePane extends SimpleStaticPane {
 
 
     @Override
-    public void addBorder(GuiItem item) {
-        super.addBorder(item);
+    public void setBorder(GuiItem item) {
+        super.setBorder(item);
         addItem(back, 0, height-1);
         addItem(next, length-1, height-1);
     }

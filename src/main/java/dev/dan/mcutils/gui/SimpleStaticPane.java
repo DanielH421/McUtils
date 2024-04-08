@@ -37,16 +37,16 @@ public class SimpleStaticPane extends StaticPane {
     }
 
 
-    public void addBorder(GuiItem item) {
+    public void setBorder(GuiItem item) {
 
         for (int x = 0; x < this.length; x++) {
             this.addItem(item, x, 0);
-            this.addItem(item, x, 4 - 1);
+            this.addItem(item, x, height - 1);
         }
 
         for (int y = 0; y < this.height; y++) {
             this.addItem(item, 0, y);
-            this.addItem(item, 9 - 1, y);
+            this.addItem(item, length - 1, y);
         }
     }
 
