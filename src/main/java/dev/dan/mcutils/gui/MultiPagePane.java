@@ -27,43 +27,31 @@ public class MultiPagePane extends StaticPane {
 
     public MultiPagePane(Slot slot, int length, int height, @NotNull Pane.Priority priority) {
         super(slot, length, height, priority);
-
-        reservedBack.setItem(back);
-        reservedNext.setItem(next);
-        reservedSlots.add(reservedNext);
-        reservedSlots.add(reservedBack);
+        reserveSlots();
     }
 
     public MultiPagePane(int x, int y, int length, int height, @NotNull Pane.Priority priority) {
         super(x, y, length, height, priority);
-
-        reservedBack.setItem(back);
-        reservedNext.setItem(next);
-        reservedSlots.add(reservedNext);
-        reservedSlots.add(reservedBack);
+        reserveSlots();
     }
 
     public MultiPagePane(Slot slot, int length, int height) {
         super(slot, length, height);
-
-        reservedBack.setItem(back);
-        reservedNext.setItem(next);
-        reservedSlots.add(reservedNext);
-        reservedSlots.add(reservedBack);
+        reserveSlots();
     }
 
     public MultiPagePane(int x, int y, int length, int height) {
         super(x, y, length, height);
-
-        reservedBack.setItem(back);
-        reservedNext.setItem(next);
-        reservedSlots.add(reservedNext);
-        reservedSlots.add(reservedBack);
+        reserveSlots();
     }
 
     public MultiPagePane(int length, int height) {
         super(length, height);
+        reserveSlots();
+    }
 
+    
+    private void reserveSlots() {
         reservedBack.setItem(back);
         reservedNext.setItem(next);
         reservedSlots.add(reservedNext);
