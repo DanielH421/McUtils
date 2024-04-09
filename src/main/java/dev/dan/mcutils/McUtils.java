@@ -1,5 +1,7 @@
 package dev.dan.mcutils;
 
+import com.j256.ormlite.logger.Level;
+import com.j256.ormlite.logger.Logger;
 import dev.dan.mcutils.listeners.ChecksListener;
 import dev.dan.mcutils.listeners.CustomEventListener;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
@@ -18,6 +20,7 @@ public final class McUtils extends ManagedPlugin {
     public void enable() {
         instance = this;
         ProtocolListener.registerProtocolListeners();
+        Logger.setGlobalLogLevel(Level.OFF);
         registerListener(new CustomEventListener());
         registerListener(new ChecksListener());
     }
