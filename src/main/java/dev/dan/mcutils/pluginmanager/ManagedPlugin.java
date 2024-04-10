@@ -19,10 +19,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
     @Getter
     private Logger customLogger = new Logger(getPrefix());
 
-    @Getter
-    private BukkitCommandManager commandManager = null;
-
-
+    public BukkitCommandManager commandManager = null;
 
     @Override
     public void onEnable(){
@@ -51,6 +48,14 @@ public abstract class ManagedPlugin extends JavaPlugin {
         }
         customLogger.log(secondBar.toString());
     }
+
+
+    @Override
+    public void onDisable() {
+        getCustomLogger().log("&c" + getSecondaryColor() + "Disabling &"+ getPrimaryColor() + this.getName());
+        disable();
+    }
+
 
     public abstract void enable();
     public abstract void disable();
