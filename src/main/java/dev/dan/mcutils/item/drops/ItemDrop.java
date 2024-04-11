@@ -37,20 +37,20 @@ public abstract class ItemDrop<T> {
     }
 
     public static class Defaults {
-        public ItemDrop PLAYER_INVENTORY = new ItemDrop<Player>(DropType.PLAYER) {
+        public static ItemDrop PLAYER_INVENTORY = new ItemDrop<Player>(DropType.PLAYER) {
             @Override
             public void onDrop(Player p, ItemStack item, Object... optional) {
                 p.getInventory().addItem(item);
             }
         };
-        public ItemDrop GROUND_WORLD = new ItemDrop<Location>(DropType.LOCATION){
+        public static ItemDrop GROUND_WORLD = new ItemDrop<Location>(DropType.LOCATION){
             @Override
             public void onDrop(Location loc, ItemStack item, Object... optional){
                 WorldUtils.dropItemNaturally(loc, new ItemCreator(item));
             }
         };
 
-        public ItemDrop CONTAINED_GROUND = new ItemDrop<Location>(DropType.LOCATION) {
+        public static ItemDrop CONTAINED_GROUND = new ItemDrop<Location>(DropType.LOCATION) {
             @Override
             public void onDrop(Location loc, ItemStack item, Object... optional) {
                 if(this.getContainer() != null){
