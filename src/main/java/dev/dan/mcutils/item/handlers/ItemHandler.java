@@ -41,7 +41,7 @@ public abstract class ItemHandler<E> {
 
     public abstract void onEvent(E event);
 
-    
+
     public Class<? extends Event> getEventClass(){
         ParameterizedType p = (ParameterizedType) getClass().getGenericSuperclass();
         return (Class<? extends Event>) p.getActualTypeArguments()[0];
