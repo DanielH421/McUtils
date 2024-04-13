@@ -48,6 +48,7 @@ public abstract class TableTemplate<T, I> {
 
     public void update(T t){
         try {
+            add(t);
             dao.update(t);
         } catch (SQLException e){
             McUtils.getInstance().getCustomLogger().printStackTrace(e);
