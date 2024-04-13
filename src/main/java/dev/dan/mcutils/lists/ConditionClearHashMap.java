@@ -5,7 +5,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public abstract class ConditionClearHashMap extends HashMap {
+public abstract class ConditionClearHashMap<K, V> extends HashMap<K, V> {
 
     public ConditionClearHashMap(ManagedPlugin plugin, int period){
         new BukkitRunnable(){
