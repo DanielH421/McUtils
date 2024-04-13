@@ -6,11 +6,13 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
+import lombok.Getter;
 
 import java.sql.SQLException;
 
 public abstract class MCDatabase {
 
+    @Getter
     public ConnectionSource connection;
 
 
@@ -26,8 +28,6 @@ public abstract class MCDatabase {
 
             String url = host + ":" + port + "/" + database + "?user=" + username + "&password=" + password;
             connection = new JdbcConnectionSource("jdbc:mysql://" + url);
-            initialize();
-
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -43,7 +43,6 @@ public abstract class MCDatabase {
                             "for " + filePath.substring(filePath.lastIndexOf("\\") + 1, filePath.length()) + ".", true);
 
             connection = new JdbcConnectionSource("jdbc:sqlite:" + filePath);
-            initialize();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,8 +67,5 @@ public abstract class MCDatabase {
         }
         return dao;
     }
-
-
-    protected abstract void initialize();
 
 }

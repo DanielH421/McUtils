@@ -19,24 +19,28 @@ public abstract class ItemHandler<E> {
     public ItemHandler(ManagedPlugin plugin, EventPriority priority) {
         this.plugin = plugin;
         this.priority = priority;
-        validateEventAssignable();
+        try{
+            validateEventAssignable();
+        } catch (TypeNotAcceptedException e){
+            e.printStackTrace();
+        }
+
     }
 
-    private void validateEventAssignable() {
+
+    private void validateEventAssignable() throws TypeNotAcceptedException {
         ParameterizedType genericSuperclassType =
                 (ParameterizedType) getClass().getGenericSuperclass();
         Class<?> eventType = (Class<?>) genericSuperclassType.getActualTypeArguments()[0];
 
         if (!Event.class.isAssignableFrom(eventType)) {
-            try {
-                throw new TypeNotAcceptedException(Event.class, eventType);
-            } catch (TypeNotAcceptedException e) {
-                throw new RuntimeException(e);
-            }
+            throw new TypeNotAcceptedException(Event.class, eventType);
         }
     }
 
+
     public abstract void onEvent(E event);
+
 
     public Class<? extends Event> getEventClass(){
         ParameterizedType p = (ParameterizedType) getClass().getGenericSuperclass();
