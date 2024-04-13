@@ -52,7 +52,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getCustomLogger().log("&c" + getSecondaryColor() + "Disabling &"+ getPrimaryColor() + this.getName());
+        getCustomLogger().log("&" + getSecondaryColor() + "Disabling &"+ getPrimaryColor() + this.getName());
         disable();
     }
 

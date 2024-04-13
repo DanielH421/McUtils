@@ -34,6 +34,8 @@ public class LootPool {
     public Object getDecision() {
         if (lootSection == null)
             randomizeLootSection();
+        if (lootSection instanceof NullSection)
+            return null;
         return lootSection.getDecision();
     }
 
