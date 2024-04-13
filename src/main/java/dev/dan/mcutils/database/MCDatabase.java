@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import dev.dan.mcutils.McUtils;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import lombok.Getter;
 
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 public abstract class MCDatabase {
 
     @Getter
-    public ConnectionSource connection;
+    public DatabaseConnection connection;
 
 
     // The logging messages are only here while I write all this database related stuff.
@@ -27,9 +28,9 @@ public abstract class MCDatabase {
                             "for " + database + ".", true);
 
             String url = host + ":" + port + "/" + database + "?user=" + username + "&password=" + password;
-            connection = new JdbcConnectionSource("jdbc:mysql://" + url);
+            connection = new DatabaseConnection(new JdbcConnectionSource("jdbc:mysql://" + url), plugin);
         } catch (SQLException e){
-            e.printStackTrace();
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
@@ -42,18 +43,18 @@ public abstract class MCDatabase {
                             plugin.getSecondaryColor() +
                             "for " + filePath.substring(filePath.lastIndexOf("\\") + 1, filePath.length()) + ".", true);
 
-            connection = new JdbcConnectionSource("jdbc:sqlite:" + filePath);
+            connection = new DatabaseConnection(new JdbcConnectionSource("jdbc:sqlite:" + filePath), plugin);
         } catch (SQLException e) {
-            e.printStackTrace();
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
 
     protected void createTable(Class c){
         try {
-            TableUtils.createTableIfNotExists(connection, c);
+            TableUtils.createTableIfNotExists(getConnectionSource(), c);
         } catch (SQLException e) {
-            e.printStackTrace();
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
     }
 
@@ -61,11 +62,16 @@ public abstract class MCDatabase {
     protected Dao createDao(Class c) {
         Dao dao = null;
         try {
-            dao = DaoManager.createDao(connection, c);
+            dao = DaoManager.createDao(getConnectionSource(), c);
         } catch (SQLException e) {
-            e.printStackTrace();
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
         return dao;
+    }
+
+
+    public ConnectionSource getConnectionSource() {
+        return getConnection().getConnectionSource();
     }
 
 }

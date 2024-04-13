@@ -1,13 +1,24 @@
 package dev.dan.mcutils.logger;
 
+import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import dev.dan.mcutils.utils.StringUtils;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 
 public class Logger {
     private String pfx;
+    private ManagedPlugin plugin;
 
-    public Logger(String prefix){
+    @Getter
+    private String primaryColor;
+    @Getter
+    private String secondaryColor;
+
+    public Logger(String prefix, ManagedPlugin plugin){
         pfx = prefix;
+        this.plugin = plugin;
+        this.primaryColor = "&" + plugin.getPrimaryColor();
+        this.secondaryColor = "&" + plugin.getSecondaryColor();
     }
     public void log(String message){
         log(message, false);

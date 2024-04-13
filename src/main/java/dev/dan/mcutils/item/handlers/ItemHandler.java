@@ -1,5 +1,6 @@
 package dev.dan.mcutils.item.handlers;
 
+import dev.dan.mcutils.McUtils;
 import dev.dan.mcutils.exceptions.TypeNotAcceptedException;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public abstract class ItemHandler<E> {
         try{
             validateEventAssignable();
         } catch (TypeNotAcceptedException e){
-            e.printStackTrace();
+            McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }
 
     }
