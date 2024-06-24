@@ -76,7 +76,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
 
     public void registerCommand(BaseCommand cmd){
         commandManager.registerCommand(cmd);
-        customLogger.log("&"+ getSecondaryColor() +"Command: &8" + this.getName() + " &"+ getSecondaryColor()+"has been registered!", true);
+        customLogger.log("&"+ getSecondaryColor() +"Command: &8" + cmd.getName() + " &"+ getSecondaryColor()+"has been registered!", true);
     }
 
     public void callSyncEvent(Event e){

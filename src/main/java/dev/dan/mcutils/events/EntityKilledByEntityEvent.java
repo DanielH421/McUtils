@@ -1,31 +1,27 @@
 package dev.dan.mcutils.events;
 
 import lombok.Getter;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerEvent;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class PlayerUseBrushEvent extends PlayerEvent implements Cancellable {
+public class EntityKilledByEntityEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
 
-
     @Getter
-    private ItemStack brush;
-
+    private Entity killer;
     @Getter
-    private Block brushedBlock;
+    private EntityDamageByEntityEvent parentEvent;
 
-    public PlayerUseBrushEvent(@NotNull Player player, ItemStack brush) {
-        super(player);
-        this.brush = brush;
-        this.brushedBlock = player.getTargetBlock(null, 5);
+    public EntityKilledByEntityEvent(EntityDamageByEntityEvent parentEvent) {
+        super(parentEvent.getEntity());
+        this.killer = parentEvent.getDamager();
+        this.parentEvent = parentEvent;
     }
-
 
     @NotNull
     @Override
@@ -44,6 +40,6 @@ public class PlayerUseBrushEvent extends PlayerEvent implements Cancellable {
 
     @Override
     public void setCancelled(boolean b) {
-        cancelled = b;
+        this.cancelled = b;
     }
 }

@@ -2,3 +2,4 @@ name: McUtils
 version: '${project.version}'
 main: dev.dan.mcutils.McUtils
 api-version: '1.20'
+depend: [ ProtocolLib ]

@@ -2,6 +2,7 @@ package dev.dan.mcutils.listeners;
 
 
 import com.destroystokyo.paper.MaterialTags;
+import dev.dan.mcutils.events.EntityKilledByEntityEvent;
 import dev.dan.mcutils.item.ItemCreator;
 import dev.dan.mcutils.nbt.BasicKeys;
 import org.bukkit.Material;

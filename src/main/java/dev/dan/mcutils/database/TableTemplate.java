@@ -30,7 +30,7 @@ public abstract class TableTemplate<T, I> {
                 public void run() {
                     saveAllChanges();
                 }
-            }.runTaskTimerAsynchronously(McUtils.getInstance(), 1200, 1200);
+            }.runTaskTimerAsynchronously(McUtils.getInstance(), 6000, 6000);
 
         } catch (SQLException e){
             McUtils.getInstance().getCustomLogger().printStackTrace(e);

@@ -1,5 +1,6 @@
 package dev.dan.mcutils.item;
 
+import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import dev.dan.mcutils.McUtils;
 import dev.dan.mcutils.item.handlers.ItemHandler;
 import dev.dan.mcutils.nbt.BasicKeys;
@@ -202,6 +203,10 @@ public class ItemCreator {
 
     public ItemStack getStack() {
         return stack;
+    }
+
+    public GuiItem asGuiItem() {
+        return new GuiItem(getStack());
     }
 
     private void updateMeta(Consumer<ItemMeta> metaUpdater) {
