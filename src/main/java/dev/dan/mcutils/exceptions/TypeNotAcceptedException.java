@@ -4,10 +4,10 @@ import java.lang.reflect.Type;
 
 public class TypeNotAcceptedException extends Exception {
     public TypeNotAcceptedException(Class expected, Class result){
-        super("Expected generic " + expected.getName() + " but recieved " + result.getName());
+        super("Expected generic " + expected.getName() + " but received " + result.getName());
     }
-    public TypeNotAcceptedException(Class expected, Type recieved){
-        super("Expected generic " + expected.getName() + " but recieved " + recieved.getTypeName());
+    public TypeNotAcceptedException(Class expected, Type received){
+        super("Expected generic " + expected.getName() + " but received " + received.getTypeName());
     }
 
 }

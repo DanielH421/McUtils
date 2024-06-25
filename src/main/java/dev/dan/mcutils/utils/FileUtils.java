@@ -63,7 +63,7 @@ public class FileUtils {
 
 
 
-    //SPECIFIALLY MADE FOR WORLD FILES
+    //SPECIFICALLY MADE FOR WORLD FILES
     public static void moveRegionOnPack(File world){
         for(String files : world.list()){
             if(files.contains("region")) {
