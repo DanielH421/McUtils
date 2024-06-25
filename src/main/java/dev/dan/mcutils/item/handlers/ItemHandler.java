@@ -9,13 +9,12 @@ import org.bukkit.event.EventPriority;
 
 import java.lang.reflect.ParameterizedType;
 
+@Getter
 public abstract class ItemHandler<E> {
 
-    @Getter
-    private ManagedPlugin plugin;
+    private final ManagedPlugin plugin;
 
-    @Getter
-    private EventPriority priority;
+    private final EventPriority priority;
 
     public ItemHandler(ManagedPlugin plugin, EventPriority priority) {
         this.plugin = plugin;

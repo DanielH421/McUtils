@@ -1,7 +1,9 @@
 package dev.dan.mcutils.loot;
 
 import dev.dan.mcutils.lists.WeightedCollection;
+import lombok.Getter;
 
+@Getter
 public class LootSection<T> {
     private final WeightedCollection<T> lootPool = new WeightedCollection<>();
 
@@ -20,7 +22,4 @@ public class LootSection<T> {
         return lootPool.random(max);
     }
 
-    public WeightedCollection<T> getLootPool() {
-        return lootPool;
-    }
 }

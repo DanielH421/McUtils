@@ -2,8 +2,10 @@ package dev.dan.mcutils.loot;
 
 import dev.dan.mcutils.item.ItemCreator;
 import dev.dan.mcutils.item.drops.ItemDrop;
+import lombok.Getter;
 import org.bukkit.inventory.ItemStack;
 
+@Getter
 public class LootItem<T> {
     private ItemDrop drop;
     private final double weight;
@@ -25,24 +27,8 @@ public class LootItem<T> {
         return (T) this;
     }
 
-    public ItemStack getItem() {
-        return item;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public ItemCreator getItemCreator() {
         return new ItemCreator(item);
-    }
-
-    public ItemDrop getDrop() {
-        return drop;
     }
 
 }

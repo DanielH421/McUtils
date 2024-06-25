@@ -3,7 +3,7 @@ package dev.dan.mcutils.lists;
 import java.util.*;
 
 public class WeightedCollection<W> {
-    private NavigableMap<Double, W> map = new TreeMap<>();
+    private final NavigableMap<Double, W> map = new TreeMap<>();
     private final Random random;
     private double total = 0;
 

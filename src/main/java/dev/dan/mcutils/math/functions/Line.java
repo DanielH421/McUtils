@@ -1,7 +1,6 @@
 package dev.dan.mcutils.math.functions;
 
 import dev.dan.mcutils.math.MathObject;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line implements MathObject {
-    private Vector p1;
-    private Vector p2;
+    private final Vector p1;
+    private final Vector p2;
 
     public Line(Vector p1, Vector p2){
         this.p1 = p1;

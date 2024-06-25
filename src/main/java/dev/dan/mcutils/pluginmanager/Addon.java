@@ -27,6 +27,7 @@ public abstract class Addon extends ManagedPlugin {
         }
 
         commandManager = new BukkitCommandManager(this);
+
         enable();
 
         long endTime = System.nanoTime();

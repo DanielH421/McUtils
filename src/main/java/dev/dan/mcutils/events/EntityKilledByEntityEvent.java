@@ -13,9 +13,9 @@ public class EntityKilledByEntityEvent extends EntityEvent implements Cancellabl
     private boolean cancelled = false;
 
     @Getter
-    private Entity killer;
+    private final Entity killer;
     @Getter
-    private EntityDamageByEntityEvent parentEvent;
+    private final EntityDamageByEntityEvent parentEvent;
 
     public EntityKilledByEntityEvent(EntityDamageByEntityEvent parentEvent) {
         super(parentEvent.getEntity());

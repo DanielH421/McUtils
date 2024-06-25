@@ -29,13 +29,13 @@ public class PlayerLeftClickEvent extends PlayerEvent implements Cancellable {
     protected BlockFace blockFace;
 
     @Getter
-    private Event.Result useClickedBlock;
+    private final Event.Result useClickedBlock;
 
     @Getter
-    private Event.Result useItemInHand;
+    private final Event.Result useItemInHand;
 
     @Getter
-    private EquipmentSlot hand;
+    private final EquipmentSlot hand;
 
     @Getter
     protected PlayerAction action;

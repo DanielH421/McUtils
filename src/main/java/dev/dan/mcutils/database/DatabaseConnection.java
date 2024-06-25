@@ -4,12 +4,11 @@ import com.j256.ormlite.support.ConnectionSource;
 import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import lombok.Getter;
 
+@Getter
 public class DatabaseConnection {
 
-    @Getter
-    private ConnectionSource connectionSource;
-    @Getter
-    private ManagedPlugin plugin;
+    private final ConnectionSource connectionSource;
+    private final ManagedPlugin plugin;
 
 
     public DatabaseConnection(ConnectionSource connection, ManagedPlugin plugin) {

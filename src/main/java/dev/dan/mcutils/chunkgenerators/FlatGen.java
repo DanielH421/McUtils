@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,12 +14,12 @@ import java.util.Random;
 
 public class FlatGen extends ChunkGenerator {
     @Override
-    public List<BlockPopulator> getDefaultPopulators(World world) {
+    public @NotNull List<BlockPopulator> getDefaultPopulators(@NotNull World world) {
         return Collections.emptyList();
     }
 
     @Override
-    public ChunkGenerator.ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, ChunkGenerator.BiomeGrid biome) {
+    public ChunkGenerator.@NotNull ChunkData generateChunkData(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, ChunkGenerator.@NotNull BiomeGrid biome) {
         ChunkGenerator.ChunkData chunkData = super.createChunkData(world);
 
         // Set biome.
@@ -34,12 +35,12 @@ public class FlatGen extends ChunkGenerator {
     }
 
     @Override
-    public boolean canSpawn(World world, int x, int z) {
+    public boolean canSpawn(@NotNull World world, int x, int z) {
         return true;
     }
 
     @Override
-    public Location getFixedSpawnLocation(World world, Random random) {
+    public Location getFixedSpawnLocation(@NotNull World world, @NotNull Random random) {
         return new Location(world, 0, 100, 0);
     }
 }

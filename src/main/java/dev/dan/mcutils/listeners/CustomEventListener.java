@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 
 public class CustomEventListener implements Listener {
-    private static McUtils plugin = McUtils.getInstance();
+    private static final McUtils plugin = McUtils.getInstance();
 
     @EventHandler
     public void onItemDamage(PlayerItemDamageEvent e){

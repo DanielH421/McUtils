@@ -11,9 +11,9 @@ import lombok.Getter;
 
 import java.sql.SQLException;
 
+@Getter
 public abstract class MCDatabase {
 
-    @Getter
     public DatabaseConnection connection;
 
 
@@ -41,7 +41,7 @@ public abstract class MCDatabase {
                     plugin.getSecondaryColor() +
                             "Using &8SQLite &" +
                             plugin.getSecondaryColor() +
-                            "for " + filePath.substring(filePath.lastIndexOf("\\") + 1, filePath.length()) + ".", true);
+                            "for " + filePath.substring(filePath.lastIndexOf("\\") + 1) + ".", true);
 
             connection = new DatabaseConnection(new JdbcConnectionSource("jdbc:sqlite:" + filePath), plugin);
         } catch (SQLException e) {

@@ -1,7 +1,6 @@
 package dev.dan.mcutils.math.functions;
 
 import dev.dan.mcutils.math.MathObject;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.util.Vector;

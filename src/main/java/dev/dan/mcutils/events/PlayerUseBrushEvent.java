@@ -15,10 +15,10 @@ public class PlayerUseBrushEvent extends PlayerEvent implements Cancellable {
 
 
     @Getter
-    private ItemStack brush;
+    private final ItemStack brush;
 
     @Getter
-    private Block brushedBlock;
+    private final Block brushedBlock;
 
     public PlayerUseBrushEvent(@NotNull Player player, ItemStack brush) {
         super(player);

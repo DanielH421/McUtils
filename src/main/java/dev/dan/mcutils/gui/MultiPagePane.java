@@ -16,12 +16,12 @@ public class MultiPagePane extends SimpleStaticPane {
 
     private int currentPane = 0;
 
-    private ChestGui gui;
+    private final ChestGui gui;
 
     int maxIndex = -1;
 
-    private GuiItem back = new GuiItem(new ItemCreator(Material.RED_STAINED_GLASS_PANE, StringUtils.altColor("&c&lBack")).getStack());
-    private GuiItem next = new GuiItem(new ItemCreator(Material.GREEN_STAINED_GLASS_PANE, StringUtils.altColor("&e&lNext")).getStack());
+    private final GuiItem back = new GuiItem(new ItemCreator(Material.RED_STAINED_GLASS_PANE, StringUtils.altColor("&c&lBack")).getStack());
+    private final GuiItem next = new GuiItem(new ItemCreator(Material.GREEN_STAINED_GLASS_PANE, StringUtils.altColor("&e&lNext")).getStack());
 
     public MultiPagePane(Slot slot, int length, int height, @NotNull Pane.Priority priority, ChestGui gui) {
         super(slot, length, height, priority);

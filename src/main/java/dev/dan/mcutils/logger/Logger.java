@@ -6,17 +6,15 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 
 public class Logger {
-    private String pfx;
-    private ManagedPlugin plugin;
+    private final String pfx;
 
     @Getter
-    private String primaryColor;
+    private final String primaryColor;
     @Getter
-    private String secondaryColor;
+    private final String secondaryColor;
 
     public Logger(String prefix, ManagedPlugin plugin){
         pfx = prefix;
-        this.plugin = plugin;
         this.primaryColor = "&" + plugin.getPrimaryColor();
         this.secondaryColor = "&" + plugin.getSecondaryColor();
     }

@@ -13,13 +13,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+@Getter
 public abstract class ItemDrop<T> {
 
-    @Getter
     private ItemCreator container;
 
-    @Getter
-    private DropType type;
+    private final DropType type;
 
 
     public ItemDrop(DropType type){this.type = type;}

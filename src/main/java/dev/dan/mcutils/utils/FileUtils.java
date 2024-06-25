@@ -37,7 +37,7 @@ public class FileUtils {
         String archivename = source.getName();
         Archiver archiver = ArchiverFactory.createArchiver(ArchiveFormat.TAR, CompressionType.GZIP);
         try {
-            File archive = archiver.create(archivename, source.getParentFile(), source);
+            archiver.create(archivename, source.getParentFile(), source);
         } catch (IOException e) {
             McUtils.getInstance().getCustomLogger().printStackTrace(e);
         }

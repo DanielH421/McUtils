@@ -17,7 +17,7 @@ public abstract class ManagedPlugin extends JavaPlugin {
     public McUtils mcutils = null;
 
     @Getter
-    private Logger customLogger = new Logger(getPrefix(), this);
+    private final Logger customLogger = new Logger(getPrefix(), this);
 
     public BukkitCommandManager commandManager = null;
 

@@ -10,9 +10,9 @@ import java.util.List;
 
 public class QuadraticBezier implements MathObject {
 
-    private Vector one;
-    private Vector two;
-    private Vector three;
+    private final Vector one;
+    private final Vector two;
+    private final Vector three;
 
     private static final int[][] matrix = new int[][]{
             {1, -2, 1},

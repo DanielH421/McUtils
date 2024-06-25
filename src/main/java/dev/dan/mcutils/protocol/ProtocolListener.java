@@ -21,7 +21,7 @@ public class ProtocolListener {
 
     //This event will only be called if the player has an item in their hand.
     //No packets are sent if they do not have any item in their hand.
-    private static PacketAdapter rightClickListener = new PacketAdapter(McUtils.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.BLOCK_PLACE) {
+    private static final PacketAdapter rightClickListener = new PacketAdapter(McUtils.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.BLOCK_PLACE) {
         @Override
         public void onPacketReceiving(PacketEvent e) {
             // Get rayTraceResult from the world thread. Unfortunately this is how it's done.
@@ -66,7 +66,7 @@ public class ProtocolListener {
         }
     };
 
-    private static PacketAdapter leftClickListener = new PacketAdapter(McUtils.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.ARM_ANIMATION) {
+    private static final PacketAdapter leftClickListener = new PacketAdapter(McUtils.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.ARM_ANIMATION) {
         @Override
         public void onPacketReceiving(PacketEvent e) {
             // Get rayTraceResult from the world thread. Unfortunately this is how it's done.

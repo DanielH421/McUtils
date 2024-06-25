@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ParticleEffect {
 
-    private HashMap<String, List<Location>> effects = new HashMap<String, List<Location>>();
+    private final HashMap<String, List<Location>> effects = new HashMap<String, List<Location>>();
 
 
     public ParticleEffect() { }

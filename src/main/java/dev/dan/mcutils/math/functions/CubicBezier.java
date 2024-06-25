@@ -1,7 +1,6 @@
 package dev.dan.mcutils.math.functions;
 
 import dev.dan.mcutils.math.MathObject;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.util.Vector;
@@ -11,11 +10,11 @@ import java.util.List;
 
 public class CubicBezier implements MathObject {
 
-    private Vector one;
-    private Vector two;
-    private Vector three;
-    private Vector four;
-    private double[][] matrix;
+    private final Vector one;
+    private final Vector two;
+    private final Vector three;
+    private final Vector four;
+    private final double[][] matrix;
 
     public CubicBezier(Vector one, Vector two, Vector three, Vector four) {
         this.one = one;

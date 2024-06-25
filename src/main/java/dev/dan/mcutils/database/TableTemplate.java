@@ -15,7 +15,7 @@ public abstract class TableTemplate<T, I> {
     public Dao<T, I> dao;
     private DatabaseConnection connection;
 
-    private HashMap<I, T> changes = new HashMap<>();
+    private final HashMap<I, T> changes = new HashMap<>();
 
     public abstract void initialize();
 
@@ -57,8 +57,7 @@ public abstract class TableTemplate<T, I> {
 
 
     public void submitChanges(I id, T t){
-        if (changes.containsKey(id))
-            changes.remove(id);
+        changes.remove(id);
         changes.put(id, t);
     }
 

@@ -5,6 +5,7 @@ import dev.dan.mcutils.McUtils;
 import dev.dan.mcutils.item.handlers.ItemHandler;
 import dev.dan.mcutils.nbt.BasicKeys;
 import dev.dan.mcutils.utils.StringUtils;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventPriority;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+@Getter
 public class ItemCreator {
     private ItemStack stack;
 
@@ -57,12 +59,12 @@ public class ItemCreator {
     public boolean isPlaceable() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.NOT_PLACEABLE.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN);
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.NOT_PLACEABLE.getKey()) || Boolean.TRUE.equals(stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN));
     }
 
     public ItemCreator setPlaceable(boolean placeable) {
         ItemMeta meta = stack.getItemMeta();
-        meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN, true);
+        meta.getPersistentDataContainer().set(BasicKeys.Keys.NOT_PLACEABLE.getKey(), PersistentDataType.BOOLEAN, placeable);
         stack.setItemMeta(meta);
         return this;
     }
@@ -83,19 +85,19 @@ public class ItemCreator {
     public boolean isClickable() {
         if(stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.BOOLEAN);
+        return Boolean.FALSE.equals(stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.NOT_CLICKABLE.getKey(), PersistentDataType.BOOLEAN));
     }
 
     public boolean canMobPickup() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.MOB_PICKUP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.BOOLEAN);
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.MOB_PICKUP.getKey()) || Boolean.TRUE.equals(stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.MOB_PICKUP.getKey(), PersistentDataType.BOOLEAN));
     }
 
     public boolean isGlowing() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.GLOW_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.BOOLEAN);
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.GLOW_ON_DROP.getKey()) || Boolean.TRUE.equals(stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.GLOW_ON_DROP.getKey(), PersistentDataType.BOOLEAN));
     }
 
     public ItemCreator setGlowing(boolean glowing) {
@@ -111,7 +113,7 @@ public class ItemCreator {
     public boolean isNamedOnDrop() {
         if (stack.getItemMeta() == null)
             return true;
-        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey()) || stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.BOOLEAN);
+        return !stack.getItemMeta().getPersistentDataContainer().has(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey()) || Boolean.TRUE.equals(stack.getItemMeta().getPersistentDataContainer().get(BasicKeys.Keys.DISPLAY_NAME_ON_DROP.getKey(), PersistentDataType.BOOLEAN));
     }
 
     public ItemCreator addStringContainer(NamespacedKey key, String string) {
@@ -199,10 +201,6 @@ public class ItemCreator {
     public ItemCreator setItemMeta(ItemMeta meta) {
         stack.setItemMeta(meta);
         return this;
-    }
-
-    public ItemStack getStack() {
-        return stack;
     }
 
     public GuiItem asGuiItem() {
