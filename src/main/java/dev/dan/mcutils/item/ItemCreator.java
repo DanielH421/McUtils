@@ -155,7 +155,7 @@ public class ItemCreator {
 
         EventExecutor executor = (ignored, event) -> handler.onEvent(event);
 
-        handler.getPlugin().getServer().getPluginManager().registerEvent(handler.getEventClass(), l, EventPriority.NORMAL, executor, handler.getPlugin());
+        handler.getPlugin().getServer().getPluginManager().registerEvent(handler.getEventClass(), l, handler.getPriority(), executor, handler.getPlugin());
         return this;
     }
 

@@ -6,6 +6,7 @@ import dev.dan.mcutils.pluginmanager.ManagedPlugin;
 import lombok.Getter;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -16,7 +17,7 @@ public abstract class ItemHandler<E> {
 
     private final EventPriority priority;
 
-    public ItemHandler(ManagedPlugin plugin, EventPriority priority) {
+    public ItemHandler(@NotNull ManagedPlugin plugin, @NotNull EventPriority priority) {
         this.plugin = plugin;
         this.priority = priority;
         try{
